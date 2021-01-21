@@ -1,0 +1,130 @@
+.product-div {
+    /* background-color: beige; */
+    background-image: linear-gradient(to right, #f1c467, #80c06f)
+}
+
+.form-div {
+    background-color: rgb(233, 233, 174);
+    border: 1px solid rgb(233, 233, 174);
+    border-radius: 10px;
+    padding-top: 20px;
+}
+
+input,
+textarea {
+    /* padding: 12px 15px 12px 15px !important; */
+    width: 100%;
+    box-sizing: border-box;
+    /* border: none !important; */
+    /* border: 1px solid #f1f5e1 !important; */
+    font-size: 16px !important;
+    color: #000 !important;
+    font-weight: 400
+}
+
+.btn-color {
+    border-radius: 10px;
+    color: #fff;
+    background-image: linear-gradient(to right, cadetblue, dodgerblue);
+    padding: 15px;
+    cursor: pointer;
+    border: none !important;
+    margin-top: 40px
+}
+
+.btn-color:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #80c06f, #f1c467)
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid dodgerblue !important;
+    outline-width: 0;
+    font-weight: 400
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+::placeholder {
+    color: #000 !important;
+    opacity: 1
+}
+
+:-ms-input-placeholder {
+    color: #000 !important
+}
+
+::-ms-input-placeholder {
+    color: #000 !important
+}
+
+.form-control-label {
+    font-size: 12px;
+    /* margin-left: 15px */
+}
+
+.msg-info {
+    /*padding-left: 15px;*/
+    margin-left: 63px;
+    margin-bottom: 30px
+}
+
+a {
+    color: #000
+}
+
+a:hover {
+    color: #000
+}
+
+.bottom {
+    width: 100%;
+    margin-top: 50px !important
+}
+
+.sm-text {
+    font-size: 15px
+}
+
+@media screen and (max-width: 992px) {
+    .card1 {
+        width: 100%;
+        padding: 40px 30px 10px 30px
+    }
+    .card2 {
+        width: 100%
+    }
+    .right {
+        margin-top: 100px !important;
+        margin-bottom: 100px !important
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px !important
+    }
+    .card2 {
+        padding: 50px
+    }
+    .right {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important
+    }
+}
+
+.error {
+    color: rgb(245, 43, 43);
+    font-size: 14px !important;
+    font-weight: 400;
+    padding: 4px;
+}

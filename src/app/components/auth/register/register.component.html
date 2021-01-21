@@ -1,0 +1,57 @@
+<div class="container px-4 py-5 mx-auto row justify-content-center my-auto">
+    <div class="card3">
+        <div class="row justify-content-center my-auto">
+            <div class="col-md-8 col-10 my-5">
+                <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="./assets/images/logo.png"> </div>
+                <h6 class="row justify-content-center px-3 mb-3">Register to Codemax</h6>
+                <form [formGroup]="angForm" novalidate>
+                    <div class="form-group">
+                        <label class="form-control-label text-muted">Username *</label>
+                        <input type="text" name="username" placeholder="Username" class="form-control" formControlName="username" #username>
+                        <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['username'].errors.required">
+                                Username is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label text-muted">Email *</label>
+                        <input type="email" name="email" placeholder="Email" class="form-control" formControlName="email" #email>
+                        <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['email'].errors.required">
+                                Email is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label text-muted">Password *</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control" formControlName="password" #password>
+                        <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['password'].errors.required">
+                                Password is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label text-muted">Confirm Password *</label>
+                        <input type="password" name="confirm-password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword" #confirmPassword>
+                        <div *ngIf="angForm.controls['confirmPassword'].invalid && (angForm.controls['confirmPassword'].dirty || angForm.controls['confirmPassword'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['confirmPassword'].errors.required">
+                                ConfirmPassword must match with the password.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <ngx-recaptcha2 [siteKey]="6Lf5eTAaAAAAAP-JJ7tAMN8UMt4bebtFuB7WVPvK" formControlName="recaptcha">
+                        </ngx-recaptcha2>
+                    </div> -->
+                    <div class="row justify-content-center my-3 px-3">
+                        <button class="btn-block btn-color" type="submit" [disabled]="angForm.pristine || angForm.invalid" (click)="register(username.value, email.value, password.value)">
+                            Register to CODEMAX
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

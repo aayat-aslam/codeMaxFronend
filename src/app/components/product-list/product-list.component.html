@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div *ngFor="let product of productList" class="col-md-3">
+            <div class="card">
+                <img src="{{product.formFile}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.productName}} </h5>
+                    <h5>₹{{product.amount}}</h5>
+                    <p class="card-text">{{(product.productDescription).substr(0, 60)}} ...</p>
+                    <a class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

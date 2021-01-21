@@ -1,0 +1,70 @@
+<div class="container contact px-4 py-5 mx-auto">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="contact-info">
+                <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                <h2>Contact Us</h2>
+                <div class="row">
+                    <div class="title col-sm-10 col-md-10">Headquarters &amp; Development Center</div> <address class="col-sm-12 col-md-12"> <span class="address-link" id="goa_address"> <span id="goa_address_hover" style="color: rgb(51, 51, 51);"> <i class="bi bi-geo-alt-fill"></i> <b>Goa</b> </span><br><div> CodeMax IT Solutions Pvt. Ltd.<br> Office No A - 201, 202, 2nd Floor, <br> Asian Pinnacle, Behind Bank of India, Fatorda,<br> Goa, India (403602)</div> </span> </address>
+                </div>
+                <div class="row">
+                    <address class="col-sm-12 col-md-12">
+                        <div><i class="bi bi-telephone-fill"></i> +91 (832) 297 6020</div>
+                        <div><i class="bi bi-envelope-fill"></i> Office: <a href="mailto:office@cdmx.in">office@cdmx.in</a></div> 
+                    </address>
+                    <address class="col-sm-12 col-md-12">
+                        <div class="title">Follow Us On</div>
+                        <div class="social">
+                            <div class="social-list">
+                                <div class="row">
+                                    <div class="col-sm-2 col-md-2">
+                                        <h3><a class="icon rounded icon-facebook" href="https://www.facebook.com/cdmx.in" target="_blank"><i class="bi bi-facebook"></i></a></h3>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <h3><a class="icon rounded icon-twitter" href="https://twitter.com/cdmxin" target="_blank"><i class="bi bi-twitter"></i></a></h3>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2">
+                                        <h3><a class="icon rounded icon-linkedin" href="https://www.linkedin.com/company/codemax-it-solutions-pvt-ltd" target="_blank"><i class="bi bi-linkedin"></i></a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </address>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="row justify-content-center px-3 mb-3">
+                <img id="logo" src="./assets/images/logo.png">
+            </div>
+            <h6 class="row justify-content-center px-3 mb-3">Have an enquiry or would like to give us feedback?<br>Fill out the form below to contact our team.</h6>
+            <form [formGroup]="angForm" novalidate>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="email"><i class="bi bi-envelope-fill"></i> Email *</label>
+                        <div class="col-sm-12">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" formControlName='email' #email>
+                            <div *ngIf="angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched)" class='error'>
+                                <div *ngIf="angForm.controls['email'].errors.required">Email is required. Please enter your email.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-12" for="message"><i class="bi bi-chat-right-text-fill"></i> Message *</label>
+                        <div class="col-sm-12">
+                            <textarea class="form-control" rows="5" id="message" formControlName='message' #message></textarea>
+                            <div *ngIf="angForm.controls['message'].invalid && (angForm.controls['message'].dirty || angForm.controls['message'].touched)" class='error'>
+                                <div *ngIf="angForm.controls['message'].errors.required">Message is required. Please enter your query.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button class="btn-block btn-color" type="submit" [disabled]="angForm.pristine || angForm.invalid" (click)="submit(email.value, message.value)">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="row justify-content-center my-auto login-div">
+    <div class="card card0">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+                        <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="./assets/images/logo.png"> </div>
+                        <h6 class="row justify-content-center px-3 mb-3">Please login to your account</h6>
+                        <form [formGroup]="angForm" novalidate>
+                            <div *ngIf="error" class="alert alert-danger" role="alert">
+                                <i class="bi bi-info-circle-fill"></i> Login credentials wrong.<br> Please check your username and password.
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-muted">Username *</label>
+                                <input type="text" name="username" placeholder="Username" class="form-control" formControlName="username" #username>
+                                <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)" class='error'>
+                                    <div *ngIf="angForm.controls['username'].errors.required">
+                                        Username is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label text-muted">Password *</label>
+                                <input type="password" name="password" placeholder="Password" class="form-control" formControlName="password" #password>
+                                <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)" class='error'>
+                                    <div *ngIf="angForm.controls['password'].errors.required">
+                                        Password is required.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center my-3 px-3">
+                                <button class="btn-block btn-color" type="submit" [disabled]="angForm.pristine || angForm.invalid" (click)="login(username.value, password.value)">
+                                    Login to CODEMAX
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="bottom text-center mb-5">
+                    <p class="sm-text mx-auto mb-3">Don't have an account?<button routerLink="/register" class="btn btn-white ml-2">Register</button></p>
+                </div>
+            </div>
+            <div class="card card2">
+                <div class="my-auto mx-md-5 px-md-5 right">
+                    <h3 class="text-white">We are more than just a company</h3> <small class="text-white">We believe in high quality, optimised and sophisticated code while keeping the UI clean and user-friendly.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="row justify-content-center my-auto product-div">
+    <div class="col-md-8 col-10 my-5 form-div">
+        <h2 class="row justify-content-center px-3 mb-3"><i class="bi bi-cart4"></i> <u>Add Product</u></h2>
+        <form [formGroup]="angForm" novalidate>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-control-label text-muted">Product Name *</label>
+                        <input type="text" name="productName" placeholder="Product Name" class="form-control" formControlName="productName" #productName>
+                        <div *ngIf="angForm.controls['productName'].invalid && (angForm.controls['productName'].dirty || angForm.controls['productName'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['productName'].errors.required">
+                                Product name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-control-label text-muted">Quantity *</label>
+                        <input type="number" name="quantity" placeholder="0" class="form-control" formControlName="quantity" #quantity>
+                        <div *ngIf="angForm.controls['quantity'].invalid && (angForm.controls['quantity'].dirty || angForm.controls['quantity'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['quantity'].errors.required">
+                                Please enter valid quantity.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-control-label text-muted">Amount *</label>
+                        <input type="number" name="amount" placeholder="₹ 0" class="form-control" formControlName="amount" #amount>
+                        <div *ngIf="angForm.controls['amount'].invalid && (angForm.controls['amount'].dirty || angForm.controls['amount'].touched)" class='error'>
+                            <div *ngIf="angForm.controls['amount'].errors.required">
+                                Please enter valid amount.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="formFile" class="form-control-label text-muted">Upload product image</label>
+                        <input class="form-control" accept="image/*" (change)="onFileChange($event)" type="file" id="formFile" #formFile>
+                        <p class="error" *ngIf="!fileValidation">Maximum file size should be 20 KB.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label text-muted" for="productDescription">Description:</label>
+                <textarea placeholder="Add product description" class="form-control" rows="5" id="productDescription" #productDescription></textarea>
+            </div>
+            <div class="row justify-content-center my-3 px-3">
+                <button class="btn-block btn-color" type="submit" [disabled]="angForm.pristine || angForm.invalid || !fileValidation" (click)="addProduct(productName.value, quantity.value, amount.value, formFile.value, productDescription.value)">
+                    Add Product
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

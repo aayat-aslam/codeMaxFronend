@@ -1,0 +1,99 @@
+.cm-padding-bottom-36 {
+    padding-bottom: 36px;
+}
+
+.full-width-box {
+    overflow: hidden;
+    padding: 76px 0;
+    position: relative;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+
+.full-width-box .container,
+.full-width-box .page-header {
+    position: relative;
+}
+
+.one-page .page-header {
+    margin-bottom: 40px;
+}
+
+.page-header {
+    border-bottom: 1px solid #e1e1e1;
+    margin: 0 0 80px;
+    padding: 0;
+}
+
+.page-header .container:before {
+    background: #1e1e1e;
+    bottom: 0px;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 15px;
+    margin: 0 0 -1px;
+    position: absolute;
+    width: 40px;
+}
+
+.page-header .title {
+    font-weight: normal;
+    margin: -4px 0 18px;
+    padding: 0;
+    position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 22px;
+    text-rendering: optimizelegibility;
+}
+
+.full-width-box .container,
+.full-width-box .page-header {
+    position: relative;
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.bottom-padding-mini {
+    margin-bottom: 40px;
+}
+
+.bottom-padding {
+    margin-bottom: 80px;
+}
+
+.lead {
+    /* font-size: 16px; */
+    line-height: 1.5;
+    margin-bottom: 26px;
+}
+
+.progress.border-radius {
+    border-radius: 5px;
+}
+
+.border-radius {
+    border-radius: 5px;
+}
+
+.progress {
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.progress-bar-success {
+    background-color: #738d00;
+}
+
+.progress-bar-warning {
+    background-color: #f89406;
+}

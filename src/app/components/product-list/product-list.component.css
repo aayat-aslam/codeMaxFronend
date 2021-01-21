@@ -1,0 +1,8 @@
+.card-img-top {
+    max-height: 150px;
+}
+
+.card {
+    padding: 10px;
+    margin: 20px
+}
