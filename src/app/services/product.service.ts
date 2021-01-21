@@ -24,8 +24,7 @@ export class ProductService {
   addProduct(obj) {
     this.http.post(`${this.uri}/add-product`, obj,{'headers': this.headers })
     .subscribe((res: any) => {
-      // this.handleResponse(res);
-      console.log(res)
+      this.router.navigateByUrl('/view-product');
     }, (err: any) => {
       // This error can be internal or invalid credentials
       // You need to customize this based on the error.status code

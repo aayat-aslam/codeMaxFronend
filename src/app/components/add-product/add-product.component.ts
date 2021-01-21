@@ -34,6 +34,8 @@ export class AddProductComponent implements OnInit {
       const [file] = event.target.files;
       if(this.maxFileSize < file.size){
         this.fileValidation = false;
+      } else{
+        this.fileValidation = true;
       }
       reader.readAsDataURL(file);
     

@@ -15,16 +15,17 @@ export class ContactUsService {
 
   /**
    * This method will register new user
-   * @param username 
-   * @param email 
-   * @param password 
+   * @param username
+   * @param email
+   * @param password
    */
   contactUs(obj) {
     console.log(obj);
     this.http.post(`${this.uri}/contact-us`, obj)
     .subscribe((res: any) => {
       // this.handleResponse(res);
-      console.log(res)
+      console.log(res);
+      this.router.navigateByUrl('/');
     }, (err: any) => {
       // This error can be internal or invalid credentials
       // You need to customize this based on the error.status code
