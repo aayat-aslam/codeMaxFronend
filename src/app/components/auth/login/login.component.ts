@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
 
-  error = false;
+  public checkCredentials:boolean;
   angForm: FormGroup;
   constructor(private fb: FormBuilder, private as: AuthService, private ts:TokenService) {
     this.createForm();
@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
 
   login(username, password) {
     this.as.login(username, password);
-    this.error = !this.ts.loggedIn();
   }
 
   ngOnInit(): void {
+    this.as.credentialStatus.subscribe(value => this.checkCredentials = value);
   }
 
 }

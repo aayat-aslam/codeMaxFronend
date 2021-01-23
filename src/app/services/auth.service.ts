@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  headers : any;
   uri = 'http://127.0.0.1:8000/api';
   constructor(
     private http : HttpClient,
     private ts : TokenService,
-    private router : Router
+    private router : Router,
+    private ps : ProductService
   ) { }
 
   private loggedIn = new BehaviorSubject<boolean>(this.ts.loggedIn())
@@ -21,11 +24,24 @@ export class AuthService {
   changeAuthStatus(value: boolean){
     this.loggedIn.next(value);
   }
+
+  private userName = new BehaviorSubject<any>(this.userDetails())
+  getUsername = this.userName.asObservable();
+  changeUsername(value: any){
+    this.userName.next(value);
+  }
+
+  private checkCredentials = new BehaviorSubject<boolean>(this.ts.loggedIn())
+  credentialStatus = this.checkCredentials.asObservable();
+  changeCredentialStatus(value: boolean){
+    this.checkCredentials.next(value);
+  }
+
   /**
    * This method will register new user
-   * @param username 
-   * @param email 
-   * @param password 
+   * @param username
+   * @param email
+   * @param password
    */
   register(username, email, password) {
     const obj = {
@@ -47,8 +63,8 @@ export class AuthService {
 
   /**
    * This method will authenticate an user
-   * @param username 
-   * @param password 
+   * @param username
+   * @param password
    */
   login(username, password) {
     const obj = {
@@ -65,18 +81,57 @@ export class AuthService {
         // Navigate to home page
         // this.router.navigate(['/']);
         this.handleResponse(res);
+        this.changeCredentialStatus(false);
+        // this.ps.changeProductCountStatus(this.ps.productCount())
+        // console.log(this.ps.productCount());
       }, (err: any) => {
         // This error can be internal or invalid credentials
         // You need to customize this based on the error.status code
         // this.loading = false;
         // this.errors = true;
-        console.log(err)
+        this.changeCredentialStatus(true);
+        console.log(err);
       });
   }
 
   handleResponse(data){
     this.ts.handleToken(data)
     this.changeAuthStatus(true);
+    this.headers = new HttpHeaders()
+    .set('content-type', 'application/json')
+    .set('Authorization', 'Bearer '+data.token)
+    .set('Access-Control-Allow-Origin', '*');
+    this.productCount();
+    this.userDetails();
+    console.log(this.ts.get());
     this.router.navigateByUrl('/view-product');
+  }
+
+  productCount(){
+    if(this.headers){
+      this.http.get(`${this.uri}/product-count`, {'headers': this.headers })
+        .subscribe(res => {
+          this.ps.changeProductCountStatus(res);
+      }, (err: any) => {
+        console.log(err)
+      });
+    }else{
+      return '';
+    }
+  }
+
+  userDetails(){
+    if(this.headers){
+      this.http.get(`${this.uri}/user`, {'headers': this.headers })
+      .subscribe(res => {
+        this.changeUsername(res.user.username);
+      }, (err: any) => {
+        this.changeAuthStatus(false);
+        this.ts.remove();
+        console.log(err)
+      });
+    }else{
+      return '';
+    }
   }
 }

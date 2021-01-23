@@ -7,7 +7,7 @@
                         <div class="row justify-content-center px-3 mb-3"> <img id="logo" src="./assets/images/logo.png"> </div>
                         <h6 class="row justify-content-center px-3 mb-3">Please login to your account</h6>
                         <form [formGroup]="angForm" novalidate>
-                            <div *ngIf="error" class="alert alert-danger" role="alert">
+                            <div *ngIf="checkCredentials" class="alert alert-danger" role="alert">
                                 <i class="bi bi-info-circle-fill"></i> Login credentials wrong.<br> Please check your username and password.
                             </div>
                             <div class="form-group">
